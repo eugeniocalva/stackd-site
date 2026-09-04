@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stack'd Development Studio</title>
+  <meta name="description" content="Stack'd Development Studio makes Stack'd, a privacy-first personal finance tracker. No accounts, no cloud, no tracking: every wallet, log and budget stays on your device.">
+  <meta property="og:title" content="Stack'd Development Studio">
+  <meta property="og:description" content="Stack'd is a personal finance tracker that keeps everything on your phone. No accounts, no cloud, no tracking.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/og.png">
+  <meta name="theme-color" content="#f4f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="img/icon-512.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="img/icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Stack'd Development Studio, home">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true" fill="currentColor">
+        <polygon points="17,6 28,12 17,18 6,12"/>
+        <path d="M6 17 L11 14.5 L17 18 L23 14.5 L28 17 L17 23 Z"/>
+        <path d="M4 22 L10 19 L17 23 L24 19 L30 22 L17 29 Z"/>
+        <rect x="36" y="16" width="5" height="22"/>
+        <polygon points="38.5,4 45,16 32,16"/>
+      </svg>
+      Stack'd <small>Development Studio</small>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="#app">The app</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#studio">Studio</a>
+      <a href="support.html">Support</a>
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.stackd.finance">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Stack'd · personal finance tracker</p>
+      <h1>Money tracking that never leaves your phone.</h1>
+      <p class="lede">Stack'd keeps every wallet, every log and every budget on your device. There is no account to create, no cloud to sync with and nothing to opt out of, because nothing is ever sent anywhere.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.stackd.finance">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 3.5v17a1 1 0 0 0 1.5.86l14.5-8.5a1 1 0 0 0 0-1.72L5.5 2.64A1 1 0 0 0 4 3.5z"/></svg>
+          Get it on Google Play
+        </a>
+        <span class="btn btn-ghost" aria-disabled="true">iPhone version in progress</span>
+      </div>
+      <div class="facts">
+        <span><b>0</b> servers, accounts or trackers</span>
+        <span><b>5</b> languages</span>
+        <span><b>CSV</b> in and out, always</span>
+      </div>
+    </div>
+    <div class="phone-col">
+      <div class="phone">
+        <img src="img/home-dark.webp" width="780" height="1688" alt="Stack'd home screen: total balance of €28,320.95, a six-month balance chart, wallet cards for Main Bank and Cash, and smart insights." fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="app">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">What's inside</p>
+        <h2>Built from the ledger up.</h2>
+      </div>
+      <p>A balance in Stack'd is never a number someone typed in. It is the sum of the logs behind it, recomputed every time, so what you see always matches what you recorded.</p>
+    </div>
+    <div class="ledger">
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg></div>
+        <div>
+          <h3>Wallets and logs</h3>
+          <p>Bank, card, cash, savings, credit card, investment: as many wallets as you keep in real life, each in its own currency. Log an expense, an income or a transfer between two wallets in a few taps, with a note and tags.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg></div>
+        <div>
+          <h3>Repeating logs</h3>
+          <p>Rent, salary, subscriptions: set a schedule once and the whole series is written out ahead of time. Edit one occurrence, this and future ones, or the entire series.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div>
+          <h3>Goals</h3>
+          <p>A monthly budget per category. The Goals tab shows what is already spent, what is still committed by repeating logs, and how the month will end up, not only how it looks today.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
+        <div>
+          <h3>Debt simulator</h3>
+          <p>Enter an amount, a rate and a duration and read the full amortization schedule: every instalment, its interest share and the remaining principal. Link a loan to its repeating payment and progress tracks itself.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg></div>
+        <div>
+          <h3>Bank statement import</h3>
+          <p>Drop in a statement as <code>CSV</code>, <code>camt.053</code> or <code>MT940</code>. Stack'd maps the columns, skips what you already logged, pairs transfers between your own wallets and shows a review before anything is saved. The file itself is never kept.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div>
+          <h3>Home widgets and insights</h3>
+          <p>Compose the Home screen from eight widget types: latest logs, income versus expense, top categories, budgets, savings rate, 50/30/20 and more. Smart Insights point out what changed this month in one line each.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">The screens</p>
+        <h2>Quiet by design.</h2>
+      </div>
+      <p>Low colour, large numbers, one thing per screen. Light and dark themes, and the interface in English, French, Italian, Spanish or Portuguese.</p>
+    </div>
+    <div class="screens">
+      <figure>
+        <div class="phone small"><img src="img/history-dark.webp" width="780" height="1688" alt="History screen listing transactions grouped by day, with amounts, categories and wallets." loading="lazy"></div>
+        <figcaption><b>History</b><span>Every log, filterable by wallet, category, tag and period.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small"><img src="img/debt-dark.webp" width="780" height="1688" alt="Loan result screen: €18,000 at 4.05% over 5 years gives a €331.90 monthly payment, €1,914.23 total interest, 60 instalments." loading="lazy"></div>
+        <figcaption><b>Debt</b><span>Simulate a loan before signing it, then track the real one.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone small"><img src="img/home-light.webp" width="780" height="1688" alt="The same home screen in the light theme." loading="lazy"></div>
+        <figcaption><b>Light and dark</b><span>Pick a theme, or let it follow the system.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacy">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Privacy</p>
+        <h2>There is nothing to opt out of.</h2>
+      </div>
+      <p>Stack'd has no backend. The app works fully offline, and the only copy of your data is the one on your device. This is the list from our <a href="privacy.html">privacy policy</a>, unchanged.</p>
+    </div>
+    <div class="privacy-grid">
+      <ul class="nots" aria-label="What the app does not do">
+        <li>No user accounts or registration</li>
+        <li>No cloud sync</li>
+        <li>No uploading of imported files</li>
+        <li>No analytics or usage tracking</li>
+        <li>No advertising or ad identifiers</li>
+        <li>No third-party data sharing</li>
+      </ul>
+      <div class="rights">
+        <div>
+          <p class="eyebrow">Access and portability</p>
+          <h3>Export everything as CSV</h3>
+          <p>Accounts, categories, transactions and loans leave the app as plain CSV files that open in any spreadsheet. The same files import back, so a backup is a full restore.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Rectification</p>
+          <h3>Edit any record, any time</h3>
+          <p>Nothing is locked after saving. Change a log, an account or a budget and every derived figure follows.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Erasure</p>
+          <h3>Factory reset, and it is gone</h3>
+          <p>Delete one record or erase everything from Settings. Since no copy exists elsewhere, no one, including us, can bring it back. Keep your CSV backups safe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="studio">
+  <div class="wrap">
+    <div class="studio">
+      <div>
+        <p class="eyebrow">The studio</p>
+        <h2 style="font-size: clamp(28px, 3.6vw, 42px); margin-top: 12px;">Stack'd Development Studio</h2>
+      </div>
+      <div class="body">
+        <p>Stack'd Development Studio is an independent software studio. We make Stack'd, and we build it the way we would want our own tools built: computed on the device, exported in formats we can open anywhere, and finished down to the typography.</p>
+        <p>Most finance apps ask for your bank login on day one and pay for themselves with your data. We think a tracker should be a private notebook with very good arithmetic, so that is what we make.</p>
+        <div class="principles">
+          <div><b>Local first</b><span>The app has no servers. Every feature, including statement import and loan schedules, runs on the phone, offline.</span></div>
+          <div><b>Honest numbers</b><span>Balances are computed from logs, never stored. Loan maths runs in whole cents, so a schedule adds up to the cent.</span></div>
+          <div><b>Open formats</b><span>CSV export and import of everything, plus the bank standards camt.053 and MT940. Your data is never trapped.</span></div>
+          <div><b>Finished work</b><span>Five languages, light and dark, native Android. Small details, like the safe area and the scroll position, get the same care as the big ones.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h3>Questions, ideas, a bug?</h3>
+        <p>Write to us. Your email is used only to reply and never joins a list.</p>
+      </div>
+      <a class="mail" href="mailto:hi@stackd.com">hi@stackd.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Stack'd Development Studio</span>
+    <nav aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:hi@stackd.com">Contact</a>
+    </nav>
+    <span class="legal">Google Play and the Google Play logo are trademarks of Google LLC. Stack'd is not affiliated with, endorsed by, or certified by any bank or financial institution.</span>
+  </div>
+</footer>
+
+</body>
+</html>
