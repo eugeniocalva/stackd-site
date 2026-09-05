@@ -38,8 +38,6 @@ Every push to `main` redeploys. Pull requests get preview URLs.
 
 ## Before going live
 
-- Replace `hi@stackd.com` (in every page and in the app's `terms.privacy.contact.d`
-  strings) with the real mailbox on the purchased domain.
 - Confirm the Google Play URL once the listing is public:
   `https://play.google.com/store/apps/details?id=com.stackd.finance`.
 - Add `img/og.png` (1200×630) for link previews, or remove the `og:image` tag.
