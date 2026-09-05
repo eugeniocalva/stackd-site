@@ -24,6 +24,21 @@ The repo root is the site root.
 script that runs against the app's dev server (`npm run dev` in the Stackd
 repo, port 3000). Re-capture them after a visible UI change.
 
+## Contact links: keep the `email_off` markers
+
+Every `mailto:` anchor is wrapped in `<!--email_off-->` … `<!--/email_off-->`.
+
+Cloudflare's Email Address Obfuscation (Scrape Shield, on by default) rewrites
+`mailto:` links into `/cdn-cgi/l/email-protection#…` and injects
+`email-decode.min.js` to undo it in the browser. The CSP in `_headers` sets
+`script-src 'none'`, so that script is blocked and the address renders as the
+literal text `[email protected]`. The markers opt each link out.
+
+Wrap any new `mailto:` link the same way. Alternatively, turn the feature off for
+the whole zone under Security → Settings → Email Address Obfuscation, but the
+markers are kept so the site is correct either way — and so the address stays
+readable to store reviewers and crawlers that do not run JavaScript.
+
 ## Deploy (Cloudflare Pages)
 
 1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
