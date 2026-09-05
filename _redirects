@@ -1,3 +1,0 @@
-# The OG-image generator ships in the repo for reproducibility but is not part
-# of the published site.
-/og-src/*  /404.html  404

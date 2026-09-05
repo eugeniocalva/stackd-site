@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /og-src/
 
 Sitemap: https://stackdplatform.com/sitemap.xml
