@@ -13,7 +13,7 @@ The repo root is the site root.
 | `support.html` | Support / FAQ (store listings link here) |
 | `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
 | `_headers` | Cloudflare Pages response headers (CSP, caching) |
-| `_redirects` | Keeps `/.tools/*` off the published site |
+| `_redirects` | Keeps `/og-src/*` off the published site |
 | `sitemap.xml` | Four canonical, extensionless URLs |
 | `styles.css` | All styles; palette and fonts mirror the app's `src/styles/variables.css` |
 | `fonts/` | Self-hosted Inter + Manrope, copied from the app repo |
@@ -33,10 +33,10 @@ repo, port 3000). Re-capture them after a visible UI change.
 `canonical` link and `og:url` in the extensionless form, because Cloudflare Pages
 308-redirects `/privacy.html` to `/privacy`.
 
-The image is rendered from `.tools/og.html` by `.tools/make-og.cjs` (Playwright at
+The image is rendered from `og-src/og.html` by `og-src/make-og.cjs` (Playwright at
 2x, downsampled with sharp), using the same fonts, palette and phone screenshot
 as the site. Cloudflare Pages publishes dot-directories like any other, so
-`_redirects` 404s `/.tools/*` to keep it off the site. Run it with the app repo's
+`_redirects` 404s `/og-src/*` to keep it off the site. Run it with the app repo's
 node_modules on NODE_PATH. Re-render
 it if the headline or the hero screenshot changes.
 
