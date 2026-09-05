@@ -24,6 +24,19 @@ The repo root is the site root.
 script that runs against the app's dev server (`npm run dev` in the Stackd
 repo, port 3000). Re-capture them after a visible UI change.
 
+## Link previews
+
+`img/og.png` is 1200×630 and is referenced by an **absolute** URL in every page's
+`og:image`; crawlers cannot resolve a relative one. Each page also carries a
+`canonical` link and `og:url` in the extensionless form, because Cloudflare Pages
+308-redirects `/privacy.html` to `/privacy`.
+
+The image is rendered from `.tools/og.html` by `.tools/make-og.cjs` (Playwright at
+2x, downsampled with sharp), using the same fonts, palette and phone screenshot
+as the site. The folder is dot-prefixed so Cloudflare Pages excludes it from the
+deployed site. Run it with the app repo's node_modules on NODE_PATH. Re-render
+it if the headline or the hero screenshot changes.
+
 ## Contact links: keep the `email_off` markers
 
 Every `mailto:` anchor is wrapped in `<!--email_off-->` … `<!--/email_off-->`.
@@ -55,5 +68,4 @@ Every push to `main` redeploys. Pull requests get preview URLs.
 
 - Confirm the Google Play URL once the listing is public:
   `https://play.google.com/store/apps/details?id=com.stackd.finance`.
-- Add `img/og.png` (1200×630) for link previews, or remove the `og:image` tag.
 - Add a `sitemap.xml` with the final domain (optional).
