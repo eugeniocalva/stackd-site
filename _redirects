@@ -1,0 +1,3 @@
+# The OG-image generator ships in the repo for reproducibility but is not part
+# of the site. Cloudflare Pages publishes dot-directories, so 404 it explicitly.
+/.tools/*  /404.html  404
