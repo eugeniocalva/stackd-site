@@ -13,7 +13,8 @@ The repo root is the site root.
 | `support.html` | Support / FAQ (store listings link here) |
 | `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
 | `_headers` | Cloudflare Pages response headers (CSP, caching) |
-| `sitemap.xml` | Four canonical, extensionless URLs |
+| `fr/`, `it/`, `es/`, `pt/` | **Generated** translated legal pages — do not hand-edit |
+| `sitemap.xml` | Generated: all canonical, extensionless URLs |
 | `styles.css` | All styles; palette and fonts mirror the app's `src/styles/variables.css` |
 | `fonts/` | Self-hosted Inter + Manrope, copied from the app repo |
 | `img/` | App icon and phone screenshots |
@@ -29,6 +30,24 @@ Both generators live in the app repo, not here, because Cloudflare Pages
 publishes every file in this repo — a build tool committed here would be served
 as a page. `_redirects` cannot hide it either: a static asset that exists wins
 over a redirect rule. See `tools/site/README.md` in the app repo.
+
+## Translated legal pages: generated, not written here
+
+`fr/`, `it/`, `es/` and `pt/` are produced by `tools/site/legal.cjs` in the
+**app** repo. Their clause text comes from the app's own dictionaries
+(`src/i18n/*.js`) and their order from `Components.TERMS_IDS` /
+`PRIVACY_IDS`, so the site cannot promise something the app does not say.
+Edit the app's dictionaries, then re-run:
+
+```bash
+node tools/site/legal.cjs    # in the app repo
+node tools/site/sitemap.cjs
+```
+
+The English `privacy.html` and `terms.html` at the root stay hand-written —
+they are the URLs in both store listings and have their own on-page nav — but
+the generator checks them for drift against the dictionaries and fails if the
+clause count or the "last updated" date disagrees.
 
 ## Link previews
 
