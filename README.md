@@ -1,53 +1,72 @@
 # stackd-site
 
-Public website for **Stack'd Development Studio** and the Stack'd app.
+Public website for **Stack'd Development Studio** and the Stack'd app, in the
+app's five languages: English at the root, French, Italian, Spanish and
+Portuguese under `/fr/`, `/it/`, `/es/`, `/pt/`.
 
-Plain static HTML and CSS. No build step, no JavaScript, no dependencies.
-The repo root is the site root.
+Static HTML and CSS, no build step, no client-side JavaScript (the CSP in
+`_headers` says `script-src 'none'`). The repo root is the site root. One
+Cloudflare Pages Function picks the visitor's language on arrival.
+
+**Most pages are generated** by scripts in the **app** repo (`tools/site/`):
+the copy lives there in `tools/site/strings/<lang>.cjs`. Edit it there and
+re-run; a hand edit here is overwritten by the next run. See
+`tools/site/README.md` in the app repo.
 
 | File | Purpose |
 |---|---|
-| `index.html` | Studio + app landing page |
-| `privacy.html` | Privacy Policy (store listings link here) |
-| `terms.html` | Terms of Use |
-| `support.html` | Support / FAQ (store listings link here) |
-| `404.html` | Not-found page (Cloudflare Pages serves it automatically) |
-| `_headers` | Cloudflare Pages response headers (CSP, caching) |
-| `fr/`, `it/`, `es/`, `pt/` | **Generated** translated legal pages — do not hand-edit |
-| `sitemap.xml` | Generated: all canonical, extensionless URLs |
+| `index.html`, `support.html`, `404.html` | **Generated** (`pages.cjs`) — Home, Support / FAQ, not-found page |
+| `privacy.html`, `terms.html` | Hand-written English Privacy Policy and Terms of Use (store listings link here); their header and footer are **generated** (`legal.cjs`) |
+| `fr/`, `it/`, `es/`, `pt/` | **Generated** — Home, Support, 404 (`pages.cjs`) and the legal pages (`legal.cjs`) in each language |
+| `functions/_middleware.js` | Pages Function: redirects a visitor from another site to their browser's language, on the four root pages only |
+| `_routes.json` | Limits the Function to `/`, `/support`, `/privacy`, `/terms` |
+| `_headers` | Cloudflare Pages response headers (CSP, caching) — keep the Function's `SECURITY_HEADERS` equal to its `/*` block |
+| `sitemap.xml` | **Generated**: all canonical, extensionless URLs |
 | `styles.css` | All styles; palette and fonts mirror the app's `src/styles/variables.css` |
 | `fonts/` | Self-hosted Inter + Manrope, copied from the app repo |
-| `img/` | App icon and phone screenshots |
+| `img/` | App icon, link-preview image, phone screenshots (`img/<lang>/` per language) |
+
+## Language menu and redirect
+
+Every page header has a language menu: a native `<details>`, so it needs no
+script, linking to the same page in each language.
+
+On `/`, `/support`, `/privacy` and `/terms`, `functions/_middleware.js` looks
+at the browser's `Accept-Language`. A visitor arriving from another site whose
+first supported language is French, Italian, Spanish or Portuguese gets a 302
+to that language's page. A click from inside the site is never redirected
+(same-origin `Referer`), which is how choosing English sticks — no cookie, as
+the privacy page promises. Crawlers send no `Accept-Language` and get English;
+`hreflang` links tell them about the rest.
+
+`functions/` and `_routes.json` are not published as files: the Pages upload
+skips both. Cloudflare does not apply `_headers` to a Function's responses, so
+the Function sets the same security headers itself;
+`node tools/site/redirect-check.cjs` in the app repo checks both stay equal.
 
 ## Screenshots
 
-`img/*-dark.webp` and `img/*-light.webp` are real captures of the app at
-390×844 @2x, seeded with example data, produced by `tools/site/screens.cjs` in
-the **app** repo against its dev server. Re-capture them after a visible UI
-change.
+`img/*.webp` (English) and `img/<lang>/*.webp` are real captures of the app at
+390×844 @2x, seeded with example data in that language, produced by
+`tools/site/screens.cjs` in the **app** repo against its dev server. Re-capture
+them after a visible UI change, then update the figures in the image
+descriptions.
 
-Both generators live in the app repo, not here, because Cloudflare Pages
-publishes every file in this repo — a build tool committed here would be served
-as a page. `_redirects` cannot hide it either: a static asset that exists wins
-over a redirect rule. See `tools/site/README.md` in the app repo.
+Generators live in the app repo, not here, because Cloudflare Pages publishes
+every file in this repo — a build tool committed here would be served as a
+page. `_redirects` cannot hide it either: a static asset that exists wins over
+a redirect rule.
 
-## Translated legal pages: generated, not written here
+## Legal pages
 
-`fr/`, `it/`, `es/` and `pt/` are produced by `tools/site/legal.cjs` in the
-**app** repo. Their clause text comes from the app's own dictionaries
-(`src/i18n/*.js`) and their order from `Components.TERMS_IDS` /
-`PRIVACY_IDS`, so the site cannot promise something the app does not say.
-Edit the app's dictionaries, then re-run:
-
-```bash
-node tools/site/legal.cjs    # in the app repo
-node tools/site/sitemap.cjs
-```
-
-The English `privacy.html` and `terms.html` at the root stay hand-written —
-they are the URLs in both store listings and have their own on-page nav — but
-the generator checks them for drift against the dictionaries and fails if the
-clause count or the "last updated" date disagrees.
+The clause text of `<lang>/privacy.html` and `<lang>/terms.html` comes from the
+app's own dictionaries (`src/i18n/*.js`) and their order from
+`Components.TERMS_IDS` / `PRIVACY_IDS`, so the site cannot promise something
+the app does not say. The English `privacy.html` and `terms.html` stay
+hand-written — they are the URLs in both store listings and have their own
+on-page nav — but `legal.cjs` checks them for drift against the dictionaries
+and fails if the clause count, the "last updated" date or the website clause
+disagrees.
 
 ## Link previews
 
