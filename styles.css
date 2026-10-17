@@ -7,6 +7,11 @@
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('fonts/inter-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 400 800; font-display: swap; src: url('fonts/manrope-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 400 800; font-display: swap; src: url('fonts/manrope-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* Arial Bold reshaped to Manrope 800's vertical metrics, and widened so the
+   five home titles keep their line count if font-display: swap ever shows it:
+   at 103.4 % that holds at every common device width (tools/site/hero-render.cjs
+   --verify --site; plan §11). Every Manrope use on the site is 700-800. */
+@font-face { font-family: 'Manrope Fallback'; font-weight: 700 800; src: local('Arial Bold'), local('Arial-BoldMT'); size-adjust: 103.4%; ascent-override: 103.1%; descent-override: 29%; line-gap-override: 0%; }
 
 /* ── Tokens ─────────────────────────────────────────────────────────────── */
 :root {
@@ -27,7 +32,7 @@
   --btn-ink: #f8fafc;
   --shadow: 0 24px 60px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.06);
   --phone-bezel: #0b0f19;
-  --font-display: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Manrope', 'Manrope Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --max: 1120px;
   --gutter: clamp(20px, 5vw, 48px);
@@ -144,11 +149,63 @@ strong { font-weight: 600; }
 .hero { padding: clamp(48px, 8vw, 96px) 0 clamp(32px, 6vw, 72px); }
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
 .hero h1 { font-size: clamp(38px, 5.6vw, 66px); letter-spacing: -0.035em; margin: 18px 0 22px; }
-.hero h1 em { font-style: normal; color: var(--accent); }
 .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero .facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
 .hero .facts b { font-weight: 600; color: var(--ink); }
-@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .hero .phone-col { order: -1; } }
+/* Phones and narrow tablets: the eyebrow and title first, then the screenshot,
+   then the rest of the copy, so the title opens the page on every phone. */
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; row-gap: 0; }
+  .hero-copy { display: contents; }
+  .hero .eyebrow, .hero h1, .hero .phone-col { order: -1; }
+  .hero .phone-col { margin: 6px 0 32px; }
+}
+
+/* Hero title animation (docs/site-hero-animation-plan.md in the app repo).
+   tools/site/hero.cjs emits one .w span per word (--i = its place in the
+   stagger), --n = the word count on the h1, and <em> = the accent phrase.
+
+   The rest state is the design: without animation support, or with reduced
+   motion, the title simply is there. Fill is backwards only, so a finished
+   animation lets go and the landed title is the static page itself. Only
+   transform and opacity move the words (compositor thread); the accent's
+   colour and underline are painted, on two to four words, for 0.4 s. */
+.hero h1 .w { display: inline-block; }
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+  /* The underline is the em's own background, so it runs continuously
+     across the spaces and on across a line break (box-decoration-break:
+     slice, the default). It sits where a real underline does, 0.11–0.17em
+     below the baseline: at line-height 1.1 there is no room under the
+     descenders (0.27em) before the next line's é/ó (0.29em). */
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 calc(100% - 0.13em) / 100% 0.06em;
+}
+/* Skip-ink: a halo in the page colour breaks the underline around the
+   descenders, as browsers do for text-decoration. The hero's background is
+   --paper in both themes. */
+.hero h1 em .w { text-shadow: 0.05em 0 var(--paper), -0.05em 0 var(--paper), 0.035em 0.035em var(--paper), -0.035em 0.035em var(--paper), 0 0.05em var(--paper); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 {
+    /* The same window whatever the word count: es (9 words) lands with fr (6). */
+    --hero-stagger: clamp(40ms, 480ms / (var(--n) - 1), 80ms);
+  }
+  .hero h1 .w {
+    animation: hero-word 500ms cubic-bezier(0.05, 0.7, 0.1, 1) calc(100ms + var(--i) * var(--hero-stagger)) backwards;
+  }
+  .hero h1 em {
+    animation: hero-accent 400ms cubic-bezier(0.2, 0, 0, 1) 1100ms backwards;
+  }
+}
+/* Material 3 emphasized-decelerate entrance, 500 ms, rising 0.4em. */
+@keyframes hero-word {
+  from { opacity: 0; transform: translateY(0.4em); }
+}
+/* Material 3 standard easing, 400 ms: the phrase turns accent and the
+   underline draws left to right. */
+@keyframes hero-accent {
+  from { color: var(--ink); background-size: 0% 0.06em; }
+}
 
 /* ── Phone frame ────────────────────────────────────────────────────────── */
 .phone { position: relative; width: min(300px, 100%); margin-inline: auto; aspect-ratio: 390 / 844; border-radius: 40px; background: var(--phone-bezel); padding: 10px; box-shadow: var(--shadow); isolation: isolate; }

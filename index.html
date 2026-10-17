@@ -29,6 +29,7 @@
   <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/img/icon-512.webp" type="image/webp">
   <link rel="apple-touch-icon" href="/img/icon.png">
+  <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -69,9 +70,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <p class="eyebrow">Stack'd · personal finance tracker</p>
-      <h1>Money tracking that stays on your phone.</h1>
+      <h1 aria-label="Money tracking that stays on your phone." style="--n:7"><span aria-hidden="true"><span class="w" style="--i:0">Money</span> <span class="w" style="--i:1">tracking</span> <span class="w" style="--i:2">that</span> <em><span class="w" style="--i:3">stays</span> <span class="w" style="--i:4">on</span> <span class="w" style="--i:5">your</span> <span class="w" style="--i:6">phone</span></em>&#8288;<span class="w" style="--i:6">.</span></span></h1>
       <p class="lede">Stack'd keeps every wallet, every log and every budget on your device. There is no account to create and no cloud to sync with. The only thing that ever goes online is the bank link you can choose to turn on, and it shows you every transaction before saving it.</p>
       <div class="cta">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.stackd.finance">

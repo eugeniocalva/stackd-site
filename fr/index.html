@@ -29,6 +29,7 @@
   <meta name="theme-color" content="#0b0f19" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/img/icon-512.webp" type="image/webp">
   <link rel="apple-touch-icon" href="/img/icon.png">
+  <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -69,9 +70,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <p class="eyebrow">Stack'd · finances personnelles</p>
-      <h1>Vos comptes, gardés sur votre téléphone.</h1>
+      <h1 aria-label="Vos comptes, gardés sur votre téléphone." style="--n:6"><span aria-hidden="true"><span class="w" style="--i:0">Vos</span> <span class="w" style="--i:1">comptes,</span> <span class="w" style="--i:2">gardés</span> <em><span class="w" style="--i:3">sur</span> <span class="w" style="--i:4">votre</span> <span class="w" style="--i:5">téléphone</span></em>&#8288;<span class="w" style="--i:5">.</span></span></h1>
       <p class="lede">Stack'd garde chaque compte, chaque opération et chaque budget sur votre appareil. Aucun compte utilisateur à créer, aucun cloud à synchroniser. La seule chose qui passe en ligne est le lien bancaire que vous pouvez choisir d'activer, et il vous montre chaque opération avant de l'enregistrer.</p>
       <div class="cta">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.stackd.finance&amp;hl=fr">
