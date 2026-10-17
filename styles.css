@@ -112,7 +112,21 @@ strong { font-weight: 600; }
 /* .nav > a outranks .btn-primary; restate the button colours at the higher specificity */
 .nav > a.btn-primary { color: var(--btn-ink); background: var(--btn); }
 .nav > a.btn-primary:hover { color: var(--btn-ink); background: color-mix(in srgb, var(--btn) 88%, var(--paper)); }
-@media (max-width: 640px) { .brand small { display: none; } .nav > a:not(.btn) { display: none; } }
+/* Narrower than its labels need, the header drops content instead of
+   squeezing it (squeezed, the logo shrinks to nothing, labels wrap and the
+   button runs off the page): first the tagline, then the text links. The
+   language menu and the button always stay. The widths are per language,
+   like the labels; English's are the default. Each is the widest viewport
+   where the row no longer fits (brand + 24 px gap + nav, in a 0.9 vw wrap),
+   so re-measure them if a header label changes. */
+@media (max-width: 829px) { .brand small { display: none; } }
+@media (max-width: 851px) { :lang(pt) .brand small { display: none; } }
+@media (max-width: 855px) { :lang(it) .brand small, :lang(es) .brand small { display: none; } }
+@media (max-width: 959px) { :lang(fr) .brand small { display: none; } }
+@media (max-width: 683px) { .nav > a:not(.btn) { display: none; } }
+@media (max-width: 705px) { :lang(pt) .nav > a:not(.btn) { display: none; } }
+@media (max-width: 708px) { :lang(it) .nav > a:not(.btn), :lang(es) .nav > a:not(.btn) { display: none; } }
+@media (max-width: 812px) { :lang(fr) .nav > a:not(.btn) { display: none; } }
 
 /* Language menu — a native <details>, because the site runs no script. It
    stays visible on phones, where the text links above are hidden. */
