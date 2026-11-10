@@ -223,11 +223,14 @@ strong { font-weight: 600; }
 /* ── Phone frame ────────────────────────────────────────────────────────── */
 .phone { position: relative; width: min(300px, 100%); margin-inline: auto; aspect-ratio: 390 / 844; border-radius: 40px; background: var(--phone-bezel); padding: 10px; box-shadow: var(--shadow); isolation: isolate; }
 .phone::before { content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; border-radius: 14px; background: #0b0f19; z-index: 2; }
-.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 32px; }
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 32px; box-sizing: border-box; padding-top: 38px; background: #0b0e18; }
+/* The screenshots have no status bar, so the screen starts below the island
+   (it used to sit on the page titles); the strip takes the screen's colour. */
+.phone img.light { background: #f5f7f9; }
 .phone-col { display: flex; justify-content: center; }
 .phone.small { width: min(240px, 100%); border-radius: 34px; padding: 8px; }
 .phone.small::before { top: 16px; width: 72px; height: 20px; }
-.phone.small img { border-radius: 28px; }
+.phone.small img { border-radius: 28px; padding-top: 30px; }
 
 /* ── Sections ───────────────────────────────────────────────────────────── */
 .section { padding: clamp(56px, 8vw, 104px) 0; border-top: 1px solid var(--rule); }
