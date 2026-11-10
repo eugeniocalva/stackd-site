@@ -99,6 +99,8 @@ strong { font-weight: 600; }
 .measure { max-width: 65ch; }
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
+/* In-page links (#get, #app, #studio…) land below the sticky header, not under it. */
+html { scroll-padding-top: 120px; }
 .site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 85%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--rule); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; text-decoration: none; }
