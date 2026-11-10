@@ -247,11 +247,12 @@ strong { font-weight: 600; }
 @media (max-width: 760px) { .ledger { grid-template-columns: 1fr; } }
 
 /* Screens strip */
-.screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.screens { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); align-items: start; }
 .screens figure { margin: 0; }
 .screens figcaption { margin-top: 18px; text-align: center; }
 .screens figcaption b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
 .screens figcaption span { font-size: 14px; color: var(--muted); }
+@media (max-width: 1000px) { .screens { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .screens { grid-template-columns: 1fr; } .screens figure + figure { margin-top: 8px; } }
 
 /* Privacy block: the "does not do" list is the product's own wording */

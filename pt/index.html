@@ -60,7 +60,7 @@
           <li><a href="/pt/" hreflang="pt" lang="pt" aria-current="true">Português</a></li>
         </ul>
       </details>
-      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.stackd.finance&amp;hl=pt-PT">Obter a app</a>
+      <a class="btn btn-primary btn-sm" href="#get">Obter a app</a>
     </nav>
   </div>
 </header>
@@ -73,9 +73,9 @@
       <p class="eyebrow">Stack'd · finanças pessoais</p>
       <h1 aria-label="O seu dinheiro, controlado no seu telemóvel." style="--n:7"><span aria-hidden="true"><span class="w" style="--i:0">O</span> <span class="w" style="--i:1">seu</span> <span class="w" style="--i:2">dinheiro,</span> <span class="w" style="--i:3">controlado</span> <em><span class="w" style="--i:4">no</span> <span class="w" style="--i:5">seu</span> <span class="w" style="--i:6">telemóvel</span></em>&#8288;<span class="w" style="--i:6">.</span></span></h1>
       <p class="lede">O Stack'd guarda cada conta, cada movimento e cada orçamento no seu dispositivo. Não há conta de utilizador para criar nem nuvem com que sincronizar. A única coisa que vai à internet é a ligação bancária que pode optar por ativar, e ela mostra-lhe cada movimento antes de o guardar.</p>
-      <div class="cta">
+      <div class="cta" id="get">
         <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.stackd.finance&amp;hl=pt-PT"><img src="/img/google-play-pt.png" alt="Obter no Google Play" width="148" height="44"></a>
-        <span class="btn btn-ghost" aria-disabled="true">Versão para iPhone a caminho</span>
+        <a class="play-badge" href="https://apps.apple.com/app/id6816636640"><img src="/img/app-store-pt.svg" alt="Descarregar na App Store" width="132" height="44"></a>
       </div>
       <div class="facts">
         <span><b>0</b> contas de utilizador ou rastreadores</span>
@@ -85,7 +85,7 @@
     </div>
     <div class="phone-col">
       <div class="phone">
-        <img src="/img/pt/home-dark.webp" width="780" height="1688" alt="Painel do Stack'd: saldo total de €28 088,91, gráfico do saldo, cartões das contas Banco principal e Poupança, e smart insights." fetchpriority="high">
+        <img src="/img/pt/home-dark.webp" width="780" height="1688" alt="Painel do Stack'd: saldo total de €28 110,91, gráfico do saldo, cartões das contas Banco principal e Revolut, e os últimos movimentos." fetchpriority="high">
       </div>
     </div>
   </div>
@@ -139,8 +139,22 @@
       <div>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
         <div>
-          <h3>Widgets e smart insights</h3>
-          <p>Componha o painel com nove tipos de widget: últimos movimentos, saldos das contas, receitas e despesas, principais categorias, orçamentos, taxa de poupança, 50/30/20 e mais. Os smart insights assinalam o que mudou este mês, numa linha cada um.</p>
+          <h3>O painel à sua maneira</h3>
+          <p>Componha o painel com nove tipos de widget: últimos movimentos, saldos das contas, receitas e despesas, principais categorias, orçamentos, taxa de poupança, 50/30/20 e mais. Deslize o dedo por um gráfico para ler cada dia ou mês, e agite o telemóvel para ocultar todos os valores.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div>
+          <h3>Widgets no telemóvel</h3>
+          <p>Saldos, receitas e despesas, categorias, orçamentos, próximos pagamentos e a curva do saldo, no ecrã principal do iPhone ou do Android, com uma adição rápida para uma despesa, uma receita ou uma transferência. Quando os saldos estão ocultos, os widgets também os ocultam.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <div>
+          <h3>Dicas Inteligentes</h3>
+          <p>Um separador de notas curtas tiradas dos seus próprios movimentos: um orçamento à frente do mês, uma categoria que cresceu, um pagamento que vence esta semana. Cada uma abre o ecrã de que fala, e tudo é calculado no telemóvel.</p>
         </div>
       </div>
     </div>
@@ -188,6 +202,10 @@
         <figcaption><b>Histórico</b><span>Cada movimento, filtrável por conta, categoria, etiqueta e período.</span></figcaption>
       </figure>
       <figure>
+        <div class="phone small"><img src="/img/pt/insights-dark.webp" width="780" height="1688" alt="Ecrã Dicas Inteligentes: notas curtas sobre as despesas do mês, os orçamentos e os próximos pagamentos." loading="lazy"></div>
+        <figcaption><b>Dicas Inteligentes</b><span>O que mudou este mês, uma linha cada.</span></figcaption>
+      </figure>
+      <figure>
         <div class="phone small"><img src="/img/pt/debt-dark.webp" width="780" height="1688" alt="Resultado de um crédito: €18 000 a 4,05% em 5 anos dão uma prestação mensal de €331,90, €1914,23 de juros totais, 60 prestações." loading="lazy"></div>
         <figcaption><b>Dívidas</b><span>Simule um crédito antes de o assinar e depois acompanhe o verdadeiro.</span></figcaption>
       </figure>
@@ -220,8 +238,8 @@
       <div class="rights">
         <div>
           <p class="eyebrow">Acesso e portabilidade</p>
-          <h3>Exporte tudo em CSV</h3>
-          <p>Contas, categorias, movimentos e créditos saem da app como ficheiros CSV simples, que abrem em qualquer folha de cálculo. Os mesmos ficheiros voltam a importar-se, por isso uma cópia de segurança é uma restauração completa.</p>
+          <h3>Faça cópia e exporte tudo</h3>
+          <p>A cópia de segurança guarda todos os seus dados num só ficheiro, no iCloud Drive ou no telemóvel, quando toca em Fazer cópia agora ou uma vez por dia, e repõe-nos num só passo. Cada registo sai também como um CSV simples, que abre em qualquer folha de cálculo.</p>
         </div>
         <div>
           <p class="eyebrow">Retificação</p>
@@ -282,7 +300,7 @@
       <a href="/pt/support">Apoio</a>
       <!--email_off--><a href="mailto:hi@stackdplatform.com">Contacto</a><!--/email_off-->
     </nav>
-    <span class="legal">Google Play e o logótipo Google Play são marcas comerciais da Google LLC. O Stack'd não é afiliado, apoiado nem certificado por nenhum banco ou instituição financeira.</span>
+    <span class="legal">Google Play e o logótipo Google Play são marcas comerciais da Google LLC. App Store e o logótipo Apple são marcas comerciais da Apple Inc. O Stack'd não é afiliado, apoiado nem certificado por nenhum banco ou instituição financeira.</span>
   </div>
 </footer>
 
